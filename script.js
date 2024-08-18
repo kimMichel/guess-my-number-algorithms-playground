@@ -1,15 +1,37 @@
 'use strict'
 
-let number = Math.floor(Math.random() * 100) + 1
+let number = generate()
 
 document.querySelector('.number').textContent = number
 
 document.querySelector('.again').addEventListener('click', () => {
-  console.log('hello world')
+  number = generate()
+
+  document.querySelector('.number').textContent = number
+
+  document.querySelector('.binary-box').style.backgroundColor = '#222'
+  document.querySelector('.linear-box').style.backgroundColor = '#222'
+
+  document.querySelector('.binary-timer').textContent = ''
+  document.querySelector('.linear-timer').textContent = ''
+
+  document.querySelector('.binary').textContent = '?'
+  document.querySelector('.linear').textContent = '?'
+
+  document.querySelector('.check').textContent = 'Check!'
 })
 
 document.querySelector('.check').addEventListener('click', () => {
+  document.querySelector('.check').disabled = true
+  document.querySelector('.again').disabled = true
+
   Promise.all([binarySearch(), linearSearch()])
+    .then(() => {
+      document.querySelector('.check').textContent = 'Done!'
+    })
+    .finally(() => {
+      document.querySelector('.again').disabled = false
+    })
 })
 
 const binarySearch = () => {
@@ -32,7 +54,7 @@ const binarySearch = () => {
           '.binary-timer'
         ).textContent = `Attempt: ${tryed}`
 
-        return resolve
+        resolve()
       }
 
       if (mid < number) {
@@ -60,10 +82,14 @@ const linearSearch = () => {
         document.querySelector('.linear-box').style.backgroundColor = '#60b347'
         document.querySelector('.linear-timer').textContent = `Attempt: ${i}`
 
-        return resolve
+        resolve()
       }
 
       i++
     }, 1000)
   })
+}
+
+function generate() {
+  return Math.floor(Math.random() * 100) + 1
 }
