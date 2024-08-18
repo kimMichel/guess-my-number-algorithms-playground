@@ -30,6 +30,7 @@ document.querySelector('.check').addEventListener('click', () => {
       document.querySelector('.check').textContent = 'Done!'
     })
     .finally(() => {
+      document.querySelector('.check').disabled = false
       document.querySelector('.again').disabled = false
     })
 })
