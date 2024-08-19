@@ -12,10 +12,13 @@ Foi um conceito que eu vi no livro 'Entendendo Algoritmos: Um Guia Ilustrado Par
 
 E um projeto bem simples com apenas 3 arquivos:
 
-index.html   # O esqueleto do site
-script.js    # A logica que faz o site funcionar
-style.css    # Estilizacao do projeto
-.prettierrc  # Arquivo de configuracao do Prettier
+- **index.html**   # O esqueleto do site
+
+- **script.js**    # A logica que faz o site funcionar
+
+- **style.css**    # Estilizacao do projeto
+
+- **.prettierrc**  # Arquivo de configuracao do Prettier
 
 ## Tecnologias Utilizadas
 
