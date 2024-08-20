@@ -28,11 +28,19 @@ document.querySelector('.check').addEventListener('click', () => {
   Promise.all([binarySearch(), linearSearch()])
     .then(() => {
       document.querySelector('.check').textContent = 'Done!'
+
+      document.querySelector('.modal').classList.remove('hidden')
+      document.querySelector('.overlay').classList.remove('hidden')
     })
     .finally(() => {
       document.querySelector('.check').disabled = false
       document.querySelector('.again').disabled = false
     })
+})
+
+document.querySelector('.close-modal').addEventListener('click', () => {
+  document.querySelector('.modal').classList.add('hidden')
+  document.querySelector('.overlay').classList.add('hidden')
 })
 
 const binarySearch = () => {
